@@ -9,6 +9,28 @@ This is a professional resume website for Vivek Mani, an Analytics Engineer and 
 - Easy navigation
 - Mobile-friendly
 - Includes detailed work experience, skills, certifications and education
+- PDF download option
+
+## How to Create the PDF Resume
+
+To create the PDF version of your resume that visitors can download:
+
+1. **Option 1: Use a PDF converter**
+   - Open your deployed GitHub Pages website in Chrome/Firefox
+   - Use Print (Ctrl+P or Cmd+P)
+   - Change the destination to "Save as PDF"
+   - Set paper size to A4
+   - Make sure "Background graphics" is checked
+   - Save the file as "VivekMani_Resume.pdf"
+   - Upload this PDF to your GitHub repository
+
+2. **Option 2: Use online tools**
+   - Use a website-to-PDF service like pdfcrowd.com or similar
+   - Convert your GitHub Pages URL to PDF
+   - Save as "VivekMani_Resume.pdf"
+   - Upload to your repository
+
+Make sure to upload the PDF file to the root of your repository with the same filename specified in the download link (VivekMani_Resume.pdf).
 
 ## How to Host on GitHub Pages
 
