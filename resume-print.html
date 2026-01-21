@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivek Mani - Resume</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+            font-size: 9pt;
+            line-height: 1.3;
+            color: #333;
+            background: #fff;
+        }
+
+        .resume-container {
+            width: 210mm;
+            padding: 10mm 14mm;
+            margin: 0 auto;
+            background: #fff;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 8px;
+            border-bottom: 2px solid #1a5276;
+            padding-bottom: 8px;
+        }
+
+        .header h1 {
+            font-size: 20pt;
+            color: #1a5276;
+            margin-bottom: 2px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .header h2 {
+            font-size: 10pt;
+            font-weight: normal;
+            color: #555;
+            margin-bottom: 6px;
+        }
+
+        .contact-info {
+            font-size: 8.5pt;
+            color: #333;
+        }
+
+        .contact-info span {
+            margin: 0 6px;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 10pt;
+            font-weight: bold;
+            color: #fff;
+            background: #1a5276;
+            padding: 3px 8px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .section-content {
+            padding: 0 3px;
+        }
+
+        /* Professional Summary */
+        .summary-text {
+            font-size: 9pt;
+            text-align: justify;
+            line-height: 1.35;
+        }
+
+        /* Skills */
+        .skills-row {
+            font-size: 9pt;
+            margin-bottom: 2px;
+            line-height: 1.35;
+        }
+
+        .skills-row strong {
+            color: #1a5276;
+        }
+
+        /* Certifications */
+        .cert-text {
+            font-size: 8.5pt;
+            line-height: 1.4;
+        }
+
+        .cert-text strong {
+            color: #1a5276;
+        }
+
+        /* Experience */
+        .job {
+            margin-bottom: 8px;
+        }
+
+        .job:last-child {
+            margin-bottom: 0;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1px;
+        }
+
+        .job-company {
+            font-size: 10pt;
+            font-weight: bold;
+            color: #1a5276;
+        }
+
+        .job-duration {
+            font-size: 8.5pt;
+            color: #555;
+            font-weight: bold;
+        }
+
+        .job-title {
+            font-size: 9pt;
+            font-style: italic;
+            color: #444;
+            margin-bottom: 3px;
+        }
+
+        .job-bullets {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .job-bullets li {
+            font-size: 8.5pt;
+            padding-left: 10px;
+            position: relative;
+            margin-bottom: 2px;
+            text-align: justify;
+            line-height: 1.3;
+        }
+
+        .job-bullets li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #1a5276;
+            font-size: 7pt;
+        }
+
+        /* Education */
+        .education-text {
+            font-size: 9pt;
+        }
+
+        .education-text strong {
+            color: #1a5276;
+        }
+
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.98);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loading-overlay.hidden {
+            display: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1a5276;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <div class="loading-text">Generating PDF... Please wait</div>
+    </div>
+
+    <!-- Resume Content -->
+    <div class="resume-container" id="resumeContent">
+        
+        <!-- Header -->
+        <div class="header">
+            <h1>VIVEK MANI</h1>
+            <h2>Analytics Engineer | Data Engineering & BI Specialist</h2>
+            <div class="contact-info">
+                <span>📞 9920566657</span>
+                <span>✉️ Vivekmani28@gmail.com</span>
+                <span>🔗 github.com/viv3kmani</span>
+                <span>📍 India</span>
+            </div>
+        </div>
+
+        <!-- Professional Summary -->
+        <div class="section">
+            <div class="section-title">Professional Summary</div>
+            <div class="section-content">
+                <p class="summary-text">Analytics Engineer with 7+ years of experience in data transformation, modeling, and automation. Proficient in Power BI, Microsoft Fabric, Snowflake, and SQL. Expertise in designing scalable data architectures, optimizing workflows, and automating reporting pipelines. Certified in Snowflake, Microsoft Fabric, and Power BI.</p>
+            </div>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="section">
+            <div class="section-title">Technical Skills</div>
+            <div class="section-content">
+                <div class="skills-row"><strong>BI & Analytics:</strong> Power BI, Microsoft Fabric, DOMO, Tabular Editor, DAX, Power Query, Dataflows</div>
+                <div class="skills-row"><strong>Data Engineering:</strong> SQL, Snowflake, ETL/ELT Pipelines, Fabric Data Pipelines, Data Modeling, Star Schema</div>
+                <div class="skills-row"><strong>Development:</strong> Python, Git, Docker, DBT &nbsp;|&nbsp; <strong>Concepts:</strong> Semantic Models, Data Warehousing, CI/CD</div>
+            </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="section">
+            <div class="section-title">Certifications</div>
+            <div class="section-content">
+                <p class="cert-text"><strong>Snowflake SnowPro Core</strong> (2024) | <strong>Snowflake Advanced Data Engineering</strong> (In Progress) | <strong>Microsoft Fabric Analytics Engineer</strong> (2024) | <strong>DBT Fundamentals</strong> (2026) | <strong>Microsoft DA-100</strong> (2022) | <strong>DOMO Editor & Master</strong> (2019)</p>
+            </div>
+        </div>
+
+        <!-- Professional Experience -->
+        <div class="section">
+            <div class="section-title">Professional Experience</div>
+            <div class="section-content">
+
+                <!-- Job 1 -->
+                <div class="job">
+                    <div class="job-header">
+                        <span class="job-company">Softcrylic by Hexaware Tech Ltd.</span>
+                        <span class="job-duration">Jan 2023 – Present</span>
+                    </div>
+                    <div class="job-title">Lead - Data Science and Analytics | Global QSR Chain (13 BMUs, 78 Countries, 16,721 Stores, $22B+ Revenue)</div>
+                    <ul class="job-bullets">
+                        <li>Designed scalable, cost-efficient centralized reporting system using Microsoft Fabric for enterprise analytics across multiple business units.</li>
+                        <li>Developed OPS KPI Analytics solution analyzing operational KPIs vs SSTG using data imputation, Z-score normalization, and linear regression. Built What-If Analysis tool for 14 KPIs.</li>
+                        <li>Created Python-based QA Helper Tool to scan Power BI projects (.pbix), extract metadata, and output to Excel for QA validation.</li>
+                        <li>Built Fabric Data Pipelines for ETL across DEV/QA/PROD. Leveraged Fabric Semantic Link for environment-specific synchronization.</li>
+                        <li>Conducted Microsoft Copilot POC. Implemented BPA rules using Tabular Editor with tracking via Fabric notebooks.</li>
+                        <li>Developed BOGO/Upsell reporting logic through deep-dive analysis of product-level transaction data, identifying sales patterns and defining rules in SQL and DAX. Optimized ETL for ~8B rows using Snowflake.</li>
+                        <li>Provided Git integration POC for Power BI version control enabling collaborative development workflows.</li>
+                    </ul>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="job">
+                    <div class="job-header">
+                        <span class="job-company">Sutherland Global Services</span>
+                        <span class="job-duration">Oct 2021 – Dec 2022</span>
+                    </div>
+                    <div class="job-title">Associate Manager & Technical Architect – BI Development</div>
+                    <ul class="job-bullets">
+                        <li>Managed Power BI Premium capacity ensuring optimal performance. Implemented Dataflows as primary ETL tool across teams.</li>
+                        <li>Liaised with Power BI Support to identify product gaps. Developed Best Practices Guide for data modeling standards.</li>
+                        <li>Led team of 4 and supported 12 developers in building data-driven analytics solutions.</li>
+                    </ul>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="job">
+                    <div class="job-header">
+                        <span class="job-company">Sutherland Global Services</span>
+                        <span class="job-duration">Dec 2020 – Oct 2021</span>
+                    </div>
+                    <div class="job-title">Lead Data Analyst</div>
+                    <ul class="job-bullets">
+                        <li>Automated reporting for AT&T eliminating ~6000 manual reports/month. Built dashboards for Disney+, ESPN+, NHL, AOFL.</li>
+                        <li>Migrated 40+ dashboards from DOMO to Power BI, enhancing self-service analytics capabilities.</li>
+                    </ul>
+                </div>
+
+                <!-- Job 4 -->
+                <div class="job">
+                    <div class="job-header">
+                        <span class="job-company">Sutherland Global Services</span>
+                        <span class="job-duration">Apr 2018 – Jan 2020</span>
+                    </div>
+                    <div class="job-title">Senior Associate – Reporting & Analytical Services</div>
+                    <ul class="job-bullets">
+                        <li>Promoted based on performance rating of 4/5. Developed and optimized BI reporting solutions using DOMO platform.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="section">
+            <div class="section-title">Education</div>
+            <div class="section-content">
+                <p class="education-text"><strong>Bachelor of Computer Applications</strong> – Chandigarh University</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        window.onload = function() {
+            setTimeout(() => {
+                const element = document.getElementById('resumeContent');
+                
+                // Get actual content height and add small margin
+                const contentHeight = element.scrollHeight;
+                const contentWidth = element.scrollWidth;
+                
+                // Convert pixels to mm (assuming 96 DPI)
+                const pxToMm = 0.264583;
+                const heightMm = Math.ceil(contentHeight * pxToMm) + 5;
+                const widthMm = 210; // A4 width
+                
+                const opt = {
+                    margin: 0,
+                    filename: 'Vivek_Mani_Resume.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { 
+                        scale: 2,
+                        useCORS: true,
+                        logging: false
+                    },
+                    jsPDF: { 
+                        unit: 'mm', 
+                        format: [widthMm, heightMm],
+                        orientation: 'portrait'
+                    }
+                };
+
+                html2pdf().set(opt).from(element).save().then(() => {
+                    document.getElementById('loadingOverlay').classList.add('hidden');
+                    setTimeout(() => {
+                        document.body.innerHTML = `
+                            <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;font-family:Calibri,sans-serif;">
+                                <h2 style="color:#1a5276;">✅ Resume Downloaded!</h2>
+                                <p style="color:#555;margin-top:10px;">File: Vivek_Mani_Resume.pdf</p>
+                                <a href="index.html" style="color:#1a5276;margin-top:20px;text-decoration:none;padding:10px 20px;border:2px solid #1a5276;border-radius:5px;">← Back to Resume</a>
+                            </div>
+                        `;
+                    }, 500);
+                });
+            }, 300);
+        };
+    </script>
+</body>
+</html>
